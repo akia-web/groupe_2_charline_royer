@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>TutHome</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body id="app" >
+   
+    <header>
+      <nav>
+        <h1>TutHome</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="30"
+          fill="rgb(25, 44, 56)"
+          class="bi bi-person-circle"
+          viewBox="0 0 16 16"
+        >
+          <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+          <path
+            fill-rule="evenodd"
+            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+          />
+        </svg>
+      </nav>
+    </header>
+
+    <main>
+      <div class="containerRecherche">
+        <h2>Rechercher un article</h2>
+        <input type="text" placeholder="Rechercher..." v-model="recherche" />
+      </div>
+
+      <div v-if="recherche == null" class="resultat">
+        <div class="containerCategories">
+          <span
+            class="categories"
+            @click="categorie = 'populaire'"
+            v-bind:class="{ active: categorie == 'populaire' }"
+            >Populaire
+          </span>
+          <span
+            class="categories"
+            @click="categorie = 'tous'"
+            v-bind:class="{ active: categorie == 'tous' }"
+            >Tous
+          </span>
+          <span class="categories" @click="popup = true"
+            >choisir une categorie</span
+          >
+        </div>
+        <div class="containerTuto">
+          <!--Populaire-->
+          <div
+            class="tuto"
+            v-for="item in tuto"
+            v-if="categorie == 'populaire'">
+            <div v-if="item.populaire == true">
+              <img :src="item.image" alt="" />
+              <h3 class @click="goTo(item.url)">{{item.titre}}</h3>
+            </div>
+          </div>
+
+          <!--Tous-->
+          <div class="tuto" v-for="item in tuto" v-if="categorie == 'tous'">
+            <img :src="item.image" alt="" />
+            <h3 class>{{item.titre}}</h3>
+          </div>
+
+           <!--brico-->
+        <div class="tuto" v-for="item in tuto" v-if="categorie == 'bricolage'">
+            <div v-if="item.categorie == categorie">
+                <img :src="item.image" alt="" />
+                <h3 class>{{item.titre}}</h3>
+            </div>
+       
+        </div>
+         <!--entretient-->
+         <div class="tuto" v-for="item in tuto" v-if="categorie == 'entretient'">
+            <div v-if="item.categorie == categorie">
+                <img :src="item.image" alt="" />
+                <h3 class>{{item.titre}}</h3>
+            </div>
+       
+          </div>
+        </div>
+       
+        </div>
+      </div>
+        </div>
+
+       
+    <!--Popup-->
+      <div class="popup" v-if="popup == true">
+        <p class="close" @click="popup = false">x</p>
+        <div class="containerChoixCategories">
+          <p v-for="item in categories" @click="popup = false, categorie = item">
+            {{item}}
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script src="script.js"></script>
+
+  </body>
+</html>

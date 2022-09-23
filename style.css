@@ -1,0 +1,123 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  background-color: rgb(95, 180, 236);
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.containerRecherche {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.containerRecherche h2 {
+  text-align: center;
+  margin-bottom: 1em;
+}
+
+.containerRecherche input {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+}
+.containerCategories {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1em;
+}
+.categories {
+  background-color: rgb(225, 230, 230);
+  border: 1px solid rgb(52, 52, 61);
+  padding: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.categories:hover {
+  background-color: rgb(52, 52, 61);
+  color: white;
+}
+.active {
+  background-color: rgb(121, 210, 210);
+}
+.resultat h2 {
+  margin-bottom: 1em;
+}
+.containerTuto {
+  display: flex;
+  flex-direction: column;
+}
+.tuto {
+  cursor: pointer;
+  margin-bottom: 2em;
+}
+.tuto img {
+  width: 100%;
+  height: 30vh;
+  object-fit: cover;
+  border-right: 1px solid rgb(52, 52, 61);
+  border-top: 1px solid rgb(52, 52, 61);
+  border-left: 1px solid rgb(52, 52, 61);
+}
+
+.tuto h3 {
+  background-color: rgb(219, 248, 248);
+  padding: 10px;
+  border-bottom: 1px solid rgb(52, 52, 61);
+  border-right: 1px solid rgb(52, 52, 61);
+  border-left: 1px solid rgb(52, 52, 61);
+}
+.popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: white;
+  width: 100%;
+}
+.close {
+  text-align: right;
+  font-weight: 600;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.containerChoixCategories {
+  text-align: center;
+  margin-top: 4em;
+}
+@media (min-width: 1250px) {
+  main {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .containerTuto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    gap: 10px;
+  }
+
+  .popup {
+    width: 80%;
+    border: 1px solid rgb(52, 52, 61);
+    left: 50%;
+    transform: translate(-50%);
+    height: 80vh;
+    top: 20px;
+  }
+}
