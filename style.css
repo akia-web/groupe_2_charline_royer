@@ -8,6 +8,10 @@ a {
   color: black;
 }
 
+.logo {
+  width: 80px;
+}
+
 nav {
   background-color: rgb(95, 180, 236);
   height: 10vh;
